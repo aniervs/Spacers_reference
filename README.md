@@ -1,8 +1,6 @@
-team-reference
-==============
+# UH++ Team Reference
 
-UH++ Team reference
+## Developed by:
 
-Developed by:
 jcg     (Jose Carlos Gutierrez)
 marX    (Marcelo Fornet)
