@@ -7,6 +7,7 @@ public class Main {
 	PrintWriter out;
 
 	public void solve() throws IOException {
+		// Code here...
 	}
 
 	public void run() {

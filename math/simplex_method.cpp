@@ -93,14 +93,14 @@ double simplexMethodPD(mat &A, vec &b, vec &c)
 }
 
 /*
-Solve the linear programming problem (in integers)
-max: C * x
-sa:  A * x <= B
+	Solve the linear programming problem (in integers)
+	max: C * x
+	sa:  A * x <= B
 
-Answer is stored in best
-IMPORTANT: best must be initialized on INFINITY
+	Answer is stored in best
+	IMPORTANT: best must be initialized on INFINITY
 
-[UNTESTED YET]
+	[UNTESTED YET]
 */
 bool SolveInteger(mat &A, vec &B, vec &C, int64 &best, vector<int64> &solution)
 {
