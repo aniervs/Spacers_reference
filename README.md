@@ -2,5 +2,15 @@
 
 ## Developed by:
 
-jcg     (Jose Carlos Gutierrez)
-marX    (Marcelo Fornet)
+Jose Carlos Gutierrez (jcg)
+Marcelo Fornet (MarX)
+
+## Untested
+
+There are a lot of codes untested yet.
+
++ data_structure/heavy_light.cpp
++ data_structure/order_statistic.cpp
++ data_structure/persistent_array.cpp
++ math/simplex_method.cpp
++ misc/josephus.cpp
