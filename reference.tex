@@ -23,7 +23,7 @@
 \textwidth 9.5in
 
 \pagestyle{fancy}
-\lhead{Universidad de la Habana: UH++}
+\lhead{ Universidad de la Habana: UH++ }
 \chead{}
 \rhead{\thepage}
 \lfoot{}
@@ -51,143 +51,173 @@
 \begin{document}
   \thispagestyle{fancy}
   \begin{center}
-    \Huge\textsc{Team Reference \\ Universidad de La Habana: UH++}
+    \Huge\textsc{Team Reference \\ Universidad de la Habana : UH++ }
   \end{center}
   
   \begin{center}
-    \textbf{ACM-ICPC Caribbean Finals 2015}\\
-    \textbf{Team Members:} Marcelo Jos\'e Fornet Forn\'es, Jos\'e Carlos Guti\'errez P\'erez, Abdel Rodr\'iguez Solis\\
+    \textbf{ ACM-ICPC Caribbean Finals 2016 }\\
+    \textbf{Team Members:} Marcelo Jos\'e Fornet Forn\'es, Ariel Cruz Cruz, Eloy P\'erez Torres\\
     \textbf{Coach:} Alfredo Somoza Moreno
-  \end{center}
-  
+  \end{center}  
 
   \begin{multicols}{2}
     \tableofcontents
   \end{multicols}
+
   
+
   \enlargethispage*{\baselineskip}
   \pagebreak
+
+  \section{ Data Structures }
+     \includecpp {Heavy Ligth Decomposition}{./data_structures}{heavy_ligth_decomposition.cpp}
+     \includecpp {Order Statistic}{./data_structures}{order_statistic.cpp}
+     \includecpp {Persistent Array}{./data_structures}{persistent_array.cpp}
+     \includecpp {Randomized Kd Tree}{./data_structures}{randomized_kd_tree.cpp}
+     \includecpp {Treap}{./data_structures}{treap.cpp}
+     \includecpp {Union Find}{./data_structures}{union_find.cpp}
+     \includecpp {Vantage Point Tree}{./data_structures}{vantage_point_tree.cpp}
+    
   
-  \section{Data Structures}
-  	\includecpp{Union Find}{./data_structures}{union_find.cpp}
-  	\includecpp{Randomized KD Tree}{./data_structures}{randomized_kd_tree.cpp}
-  	\includecpp{Vantage Point Tree}{./data_structures}{vantage_point_tree.cpp}
 
   \enlargethispage*{\baselineskip}
   \pagebreak
 
-  \section{Dynamic Programming}
-  	\includecpp{Convex hull trick}{./dynamic_programming}{convex_hull_trick.cpp}
+  \section{ Dynamic Programming }
+     \includecpp {Convex Hull Trick}{./dynamic_programming}{convex_hull_trick.cpp}
+    
+  
 
   \enlargethispage*{\baselineskip}
   \pagebreak
 
-  \section{Geometry}
-  	\includecpp{Basics}{./geometry}{basics.cpp}
-  	\includecpp{Polygon Area}{./geometry}{area2_pol.cpp}
-  	\includecpp{Polygon Centroid}{./geometry}{centroid.cpp}
-  	\includecpp{Convex hull}{./geometry}{convex_hull.cpp}
-  	\includecpp{Circles}{./geometry}{circle.cpp}
-  	\includecpp{Closest Pair}{./geometry}{closest_pair_points.cpp}
-  	\includecpp{Point in Polygon}{./geometry}{contains.cpp}
-  	\includecpp{Convex cut}{./geometry}{convex_cut.cpp}
-  	\includecpp{Lines and Segments}{./geometry}{line_segment_intersections.cpp}
-  	\includecpp{Pick Theorem}{./geometry}{pick_theorem.cpp}
-  	\includecpp{Rectangle Union}{./geometry}{rectangle_union.cpp}
-  	\includecpp{Rectilinear MST}{./geometry}{rectilinear_mst.cpp}
-  	\includecpp{Antipodal Points}{./geometry}{antipodal_points.cpp}
-  	\includecpp{Polygon width}{./geometry}{polygon_width.cpp}
-  	\includecpp{Point 3D}{./geometry}{point3d.cpp}
+  \section{ Geometry }
+     \includecpp {Antipodal Points}{./geometry}{antipodal_points.cpp}
+     \includecpp {Polygon Area}{./geometry}{area2_pol.cpp}
+     \includecpp {Basics}{./geometry}{basics.cpp}
+     \includecpp {Centroid}{./geometry}{centroid.cpp}
+     \includecpp {Circle}{./geometry}{circle.cpp}
+     \includecpp {Closest Pair Points}{./geometry}{closest_pair_points.cpp}
+     \includecpp {Points in Polygon}{./geometry}{contains.cpp}
+     \includecpp {Convex Cut}{./geometry}{convex_cut.cpp}
+     \includecpp {Convex Hull}{./geometry}{convex_hull.cpp}
+     \includecpp {Line Segment Intersections}{./geometry}{line_segment_intersections.cpp}
+     \includecpp {Pick Theorem}{./geometry}{pick_theorem.cpp}
+     \includecpp {Points 3D}{./geometry}{point3d.cpp}
+     \includecpp {Polygon Width}{./geometry}{polygon_width.cpp}
+     \includecpp {Rectangle Union}{./geometry}{rectangle_union.cpp}
+     \includecpp {Rectilinear Mst}{./geometry}{rectilinear_mst.cpp}
+    
+  
 
   \enlargethispage*{\baselineskip}
   \pagebreak
 
-  \section{Graph}
-  	\includecpp{Chu-Liu/Edmonds $O(E\log V)$}{./graph}{arborescence.cpp}
-  	\includecpp{Chu-Liu/Edmonds $O(EV)$}{./graph}{arborescence2.cpp}
-  	\includecpp{Articulation Points}{./graph}{articulation_points.cpp}
-  	\includecpp{Bridges}{./graph}{bridges.cpp}
-  	\includecpp{Bipartite Matching (Kuhn)}{./graph}{bipartite_matching.cpp}
-  	\includecpp{Dinic}{./graph}{dinic.cpp}
-  	\includecpp{Dominator Tree}{./graph}{dominator_tree.cpp}
-  	\includecpp{Flow with lower bound}{./graph}{flow_with_lower_bound.cpp}
-  	\includecpp{Gabow Edmonds}{./graph}{gabow_edmonds.cpp}
-  	\includecpp{Gomory-Hu Tree}{./graph}{gomory_hu_tree.cpp}
-  	\includecpp{Bipartite Matching (Hopcroft-Karp)}{./graph}{hopcroft_karp.cpp}
-  	\includecpp{Hungarian}{./graph}{hungarian.cpp}
-  	\includecpp{Min-cost Flow (Dijkstra)}{./graph}{min_cost_flow2.cpp}
-  	\includecpp{Min-cost Flow}{./graph}{min_cost_flow4.cpp}
-  	\includecpp{Off-line LCA (Tarjan)}{./graph}{offline_lca.cpp}
-  	\includecpp{LCA (Euler-tour + RMQ)}{./graph}{lca_sparse_table.cpp}
-  	\includecpp{Stoer Wagner}{./graph}{stoer_wagner.cpp}
-  	\includecpp{Tree Isomorphism}{./graph}{tree_isomorphism.cpp}
-  	\includecpp{Erdos-Gallai Theorem}{./graph}{is_graphic.cpp}
-  	\includecpp{Gabow SCC}{./graph}{scc_gabow.cpp}
+  \section{ Graph }
+     \includecpp {Chu-Liu/Edmonds $O(E\log V)$}{./graph}{arborescence.cpp}
+     \includecpp {Chu-Liu/Edmonds $O(EV)$}{./graph}{arborescence2.cpp}
+     \includecpp {Articulation Points}{./graph}{articulation_points.cpp}
+     \includecpp {Bipartite Matching}{./graph}{bipartite_matching.cpp}
+     \includecpp {Bridges}{./graph}{bridges.cpp}
+     \includecpp {Dinic}{./graph}{dinic.cpp}
+     \includecpp {Dominator Tree}{./graph}{dominator_tree.cpp}
+     \includecpp {Flow With Lower Bound}{./graph}{flow_with_lower_bound.cpp}
+     \includecpp {Gabow Edmonds}{./graph}{gabow_edmonds.cpp}
+     \includecpp {Gomory Hu Tree}{./graph}{gomory_hu_tree.cpp}
+     \includecpp {Bipartite Matching (Hopcroft-Karp)}{./graph}{hopcroft_karp.cpp}
+     \includecpp {Hungarian}{./graph}{hungarian.cpp}
+     \includecpp {LCA (Euler-tour + RMQ)}{./graph}{lca_sparse_table.cpp}
+     \includecpp {Min-cost Flow (Dijkstra)}{./graph}{min_cost_flow2.cpp}
+     \includecpp {Min-cost Flow}{./graph}{min_cost_flow4.cpp}
+     \includecpp {Off-line LCA (Tarjan)}{./graph}{offline_lca.cpp}
+     \includecpp {Gabow SCC}{./graph}{scc_gabow.cpp}
+     \includecpp {Stoer Wagner}{./graph}{stoer_wagner.cpp}
+     \includecpp {Tree Isomorphism}{./graph}{tree_isomorphism.cpp}
+    
+  
 
   \enlargethispage*{\baselineskip}
   \pagebreak
 
-  \section{Math}
-  	\includecpp{Minimum assignment (Jonker-Volgenant)}{./math}{assignment.cpp}
-  	\includecpp{Fast Fourier Transform}{./math}{fast_fourier_transform.cpp}
-  	\includecpp{Fast Modulo Transform}{./math}{fast_modulo_transform.cpp}
-  	\includecpp{Gauss Jordan}{./math}{gauss.cpp}
-  	\includecpp{Goldsection Search}{./math}{goldsection_search.cpp}
-  	\includecpp{Linear Recursion}{./math}{linear_recursion.cpp}
-  	\includecpp{Matrix Computation Algorithms}{./math}{matrix_double.cpp}
-  	\includecpp{Roots Newton}{./math}{roots_newton.cpp}
-  	\includecpp{2-SAT}{./math}{sat2.cpp}
-  	\includecpp{Parametric Self-Dual Simplex}{./math}{simplex_method.cpp}
-  	\includecpp{Simpson}{./math}{simpson.cpp}
+  \section{ Helpers }
+     \includecpp {Vectors}{./helpers}{vectors.cpp}
+    
+  
 
   \enlargethispage*{\baselineskip}
   \pagebreak
 
-  \section{Miscelaneus}
-  	\includecpp{Cube}{./misc}{cube.cpp}
-  	\includecpp{Josephus}{./misc}{josephus.cpp}
-  	\includecpp{Partition $O(n \sqrt n)$}{./misc}{partition.cpp}
+  \section{ Java }
+     \includejava {Template}{./java}{template.java}
+    
+  
 
   \enlargethispage*{\baselineskip}
   \pagebreak
 
-  \section{Number Theory}
-  	\includecpp{Modular Arithmetics}{./number_theory}{modular_arithmetics.cpp}
-  	\includecpp{Sieve}{./number_theory}{sieve.cpp}
-  	\includecpp{Divisor Sigma}{./number_theory}{divisor_sigma.cpp}
-  	\includecpp{Euler Phi}{./number_theory}{euler_phi.cpp}
-  	% \includecpp{Carmichael Lambda}{./number_theory}{carmichael_lambda.cpp}
-  	\includecpp{Mobius Mu}{./number_theory}{mobius_mu.cpp}
-  	\includecpp{Extended Gcd}{./number_theory}{ext_gcd.cpp}
-  	\includecpp{Farey Sequence}{./number_theory}{farey.cpp}
-  	\includecpp{$C(n, m)\mod p$}{./number_theory}{C_n_k.cpp}
-  	\includecpp{Discrete Logarithm}{./number_theory}{discrete_logarithm.cpp}
-  	\includecpp{Discrete Roots}{./number_theory}{discrete_roots.cpp}
-  	\includecpp{Linear Congruences}{./number_theory}{linear_congruences.cpp}
-  	\includecpp{Miller-Rabin}{./number_theory}{miller_rabin.cpp}
-  	\includecpp{ModFact}{./number_theory}{mod_fact.cpp}
-  	\includecpp{Pollard-Rho}{./number_theory}{pollard_rho.cpp}
-  	\includecpp{Primitive Root}{./number_theory}{primitive_root.cpp}
+  \section{ Math }
+     \includecpp {Minimum assignment (Jonker-Volgenant)}{./math}{assignment.cpp}
+     \includecpp {Fast Fourier Transform}{./math}{fast_fourier_transform.cpp}
+     \includecpp {Fast Modulo Transform}{./math}{fast_modulo_transform.cpp}
+     \includecpp {Gauss}{./math}{gauss.cpp}
+     \includecpp {Goldsection Search}{./math}{goldsection_search.cpp}
+     \includecpp {Linear Recursion}{./math}{linear_recursion.cpp}
+     \includecpp {Matrix Computation Algorithms}{./math}{matrix_double.cpp}
+     \includecpp {Roots Newton}{./math}{roots_newton.cpp}
+     \includecpp {2-SAT}{./math}{sat2.cpp}
+     \includecpp {Simplex}{./math}{simplex.cpp}
+     \includecpp {Simpson}{./math}{simpson.cpp}
+    
+  
 
   \enlargethispage*{\baselineskip}
   \pagebreak
 
-  \section{String}
-  	\includecpp{KMP}{./string}{kmp.cpp}
-  	\includecpp{Manacher}{./string}{manacher.cpp}
-  	\includecpp{Maximal Suffix}{./string}{maximal_suffix.cpp}
-  	\includecpp{Minimum Rotation}{./string}{minimum_rotation.cpp}
-  	\includecpp{Palindromic Tree}{./string}{palindromic_tree.cpp}
-  	\includecpp{Suffix Array $O(n \log n)$}{./string}{suffix_array1.cpp}
-  	\includecpp{Suffix Array $O(n \log^2 n)$}{./string}{suffix_array2.cpp}
-  	\includecpp{Suffix Array $O(n \log^3 n)$}{./string}{suffix_array3.cpp}
-  	\includecpp{Suffix Automaton}{./string}{suffix_automaton.cpp}
-  	\includecpp{Z-function}{./string}{zfunction.cpp}
+  \section{ Misc }
+     \includecpp {Cube}{./misc}{cube.cpp}
+     \includecpp {Josephus}{./misc}{josephus.cpp}
+     \includecpp {Partition $O(n \sqrt n)$}{./misc}{partition.cpp}
+     \includecpp {Useful}{./misc}{useful.cpp}
+    
+  
 
   \enlargethispage*{\baselineskip}
   \pagebreak
 
-  \section{Java Stuff}
-  	\includejava{Template}{./java}{template.java}
+  \section{ Number Theory }
+     \includecpp {Carmichael Lambda}{./number_theory}{carmichael_lambda.cpp}
+     \includecpp {$C(n, m)\mod p$}{./number_theory}{C_n_k.cpp}
+     \includecpp {Discrete Logarithm}{./number_theory}{discrete_logarithm.cpp}
+     \includecpp {Discrete Roots}{./number_theory}{discrete_roots.cpp}
+     \includecpp {Divisor Sigma}{./number_theory}{divisor_sigma.cpp}
+     \includecpp {Euler Phi}{./number_theory}{euler_phi.cpp}
+     \includecpp {Extended GCD}{./number_theory}{ext_gcd.cpp}
+     \includecpp {Ext Gcd2}{./number_theory}{ext_gcd2.cpp}
+     \includecpp {Farey}{./number_theory}{farey.cpp}
+     \includecpp {Linear Congruences}{./number_theory}{linear_congruences.cpp}
+     \includecpp {Miller Rabin}{./number_theory}{miller_rabin.cpp}
+     \includecpp {Mobius Mu}{./number_theory}{mobius_mu.cpp}
+     \includecpp {Modular Arithmetics}{./number_theory}{modular_arithmetics.cpp}
+     \includecpp {Mod Fact}{./number_theory}{mod_fact.cpp}
+     \includecpp {Pollard Rho}{./number_theory}{pollard_rho.cpp}
+     \includecpp {Primitive Root}{./number_theory}{primitive_root.cpp}
+     \includecpp {Sieve}{./number_theory}{sieve.cpp}
+    
+  
 
+  \enlargethispage*{\baselineskip}
+  \pagebreak
+
+  \section{ String }
+     \includecpp {KMP}{./string}{kmp.cpp}
+     \includecpp {Manacher}{./string}{manacher.cpp}
+     \includecpp {Maximal Suffix}{./string}{maximal_suffix.cpp}
+     \includecpp {Minimum Rotation}{./string}{minimum_rotation.cpp}
+     \includecpp {Palindromic Tree}{./string}{palindromic_tree.cpp}
+     \includecpp {Suffix Array $O(n \log n)$}{./string}{suffix_array1.cpp}
+     \includecpp {Suffix Array $O(n \log^2 n)$}{./string}{suffix_array2.cpp}
+     \includecpp {Suffix Automaton}{./string}{suffix_automaton.cpp}
+     \includecpp {Z-function}{./string}{zfunction.cpp}
+    
+  
 \end{document}
