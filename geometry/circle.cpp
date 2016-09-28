@@ -45,7 +45,7 @@ bool incircle(point a, point b, point c, point p)
 	a -= p; b -= p; c -= p;
 	return norm(a) * cross(b, c)
 			+ norm(b) * cross(c, a)
-			+ norm(c) * cross(a, b) >= 0; 
+			+ norm(c) * cross(a, b) >= 0;
 			// < : inside, = cocircular, > outside
 }
 
@@ -53,6 +53,36 @@ point three_point_circle(point a, point b, point c)
 {
 	point x = 1.0 / conj(b - a), y = 1.0 / conj(c - a);
 	return (y - x) / (conj(x) * y - x * conj(y)) + a;
+}
+
+/*
+    Get the center of the circles that pass through p0 and p1
+    and has ratio r.
+
+    Be careful with epsilon.
+*/
+vector<point> two_point_ratio_circle(point p0, point p1, double r){
+    if (abs(p1 - p0) > 2 * r + eps) // Points are too far.
+        return {};
+
+    point pm = (p1 + p0) / 2.0l;
+    point pv = p1 - p0;
+
+    pv = point(-pv.imag(), pv.real());
+
+    double x1 = p1.real(), y1 = p1.imag();
+    double xm = pm.real(), ym = pm.imag();
+    double xv = pv.real(), yv = pv.imag();
+
+    double A = (sqr(xv) + sqr(yv));
+    double C = sqr(xm - x1) + sqr(ym - y1) - sqr(r);
+    double D = sqrt( - 4 * A * C );
+    double t = D / 2.0 / A;
+
+    if (abs(t) <= eps)
+        return {pm};
+
+    return {c1, c2};
 }
 
 /*
@@ -88,7 +118,7 @@ double part(double xa, double ya, double xb, double yb, double r)
 		if (t < 0.0) t = 0.0;
 		else if (t > l) t = l;
 		return (x(s) * y(t) - x(t) * y(s)
-				+ (radian(xa, ya, x(s), y(s)) 
+				+ (radian(xa, ya, x(s), y(s))
 				+ radian(x(t), y(t), xb, yb)) * r * r) * 0.5;
 	}
 }
@@ -98,7 +128,7 @@ double intersection_circle_polygon(const polygon &P, double r)
 	double s = 0.0;
 	int n = P.size();;
 	for (int i = 0; i < n; i++)
-		s += part(P[i].real(), P[i].imag(), 
+		s += part(P[i].real(), P[i].imag(),
 			P[NEXT(i)].real(), P[NEXT(i)].imag(), r);
 	return fabs(s);
 }
