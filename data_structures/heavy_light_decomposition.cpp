@@ -10,7 +10,7 @@
 
 typedef vector<vector<int>> graph;
 
-struct heavy_ligth{
+struct heavy_light{
     int n, heavy[maxn], root[maxn], depth[maxn];
     int pos[maxn], ipos[maxn], parent[maxn];
 
