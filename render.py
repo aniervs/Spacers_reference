@@ -13,7 +13,7 @@ CONTEXT = {
         "Ariel Cruz Cruz",
         "Eloy P\\'erez Torres"
     ],
-    "Coach": "Alfredo Somoza Moreno"
+    "Coach": "Jos\\'e Carlos Guti\\'errez P\\'erez"
 }
 
 ALG_NAMES = {
@@ -47,7 +47,7 @@ ALG_NAMES = {
     "zfunction" : "Z-function"
 }
 
-COMPILE = False
+COMPILE = True
 
 def humanize(name):
     return " ".join(map(lambda s : s.capitalize(), name.split('_')))
