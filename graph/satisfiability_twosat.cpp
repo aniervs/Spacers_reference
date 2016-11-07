@@ -52,7 +52,7 @@ struct satisfiability_twosat
 
 		for (int u = 0; u < n; ++u)
 			if (I[u] == I[neg(u)]) return {};
-			else values[u] = I[u] > I[neg(u)];
+			else values[u] = I[u] < I[neg(u)];
 
 		return values;
 	}
