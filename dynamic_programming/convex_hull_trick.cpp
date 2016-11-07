@@ -1,121 +1,105 @@
 /*
-	Tested: http://www.infoarena.ro/problema/euro
+	Dynamic hull for max dot queries
+
+	Complexity:
+	- Add: O(log n)
+	- Query: O(log^2 n) but very fast in practice
+
+	Tested: http://codeforces.com/gym/100377/problem/L
 */
 
 typedef long long ll;
+typedef complex<ll> point;
+
+ll cross(point a, point b) { return imag(conj(a) * b); }
+
+ll dot(point a, point b) { return real(conj(a) * b); }
+
+ll area2(point a, point b, point c) { return cross(b - a, c - a); }
+
+namespace std
+{
+	bool operator<(const point &a, const point &b)
+	{
+		return real(a) < real(b) || (real(a) == real(b) && imag(a) < imag(b));
+	}
+}
 
 const ll oo = 0x3f3f3f3f3f3f3f3f;
 
-// upper hull
-struct convex_hull_trick
+struct dynamic_hull
 {
-	convex_hull_trick(int sz = 50) : h(sz) {}
+	dynamic_hull() : hulls() {}
 
-	void add(ll a, ll b)
+	void add_point(point p)
 	{
-		hull cur = hull(a, b);
-		int i;
-		for (i = 1; !h[i].isEmpty(); ++i)
-		{
-			cur = merge(cur, h[i]);
-			h[i].setEmpty();
-		}
-		h[i] = cur;
+		hull h;
+		h.add_point(p);
+
+		for (hull &_h : hulls)
+			if (_h.empty())
+			{
+				h.swap(_h);
+				break;
+			}
+			else h = merge(h, _h), _h.clear();
+
+		if (!h.empty()) hulls.emplace_back(h);
 	}
 
-	ll get_max(ll x)
+	ll max_dot(point p)
 	{
-		ll ans = -oo;
-		for (size_t i = 1; i < h.size(); ++i)
-			if (!h[i].isEmpty())
-				ans = max(ans, h[i].get(x));
-		return ans;
+		ll best = -oo;
+
+		for (hull &h : hulls)
+			if (!h.empty()) best = max(best, h.max_dot(p));
+
+		return best;
 	}
 
 private:
-	struct hull
+	struct hull : vector<point>
 	{
-		vector<pair<ll, ll>> v;
-
-		hull() { }
-
-		hull(ll a, ll b)
+		void add_point(point p)
 		{
-			v.clear();
-			v.push_back(make_pair(a, b));
+			for (int s = size(); s > 1; --s)
+				if (area2(at(s - 2), at(s - 1), p) < 0) break;
+				else pop_back();
+			push_back(p);
 		}
 
-		void add(ll a, ll b)
+		ll max_dot(point p)
 		{
-			while (v.size() >= 1 && v.back().first == a 
-				&& v.back().second < b)
-				v.pop_back();
-			if (!v.empty() && v.back().first == a)
-				return;
-			while (v.size() >= 2)
-			{
-				ll a1, a2, b1, b2;
-				a1 = v[(int) v.size() - 2].first;
-				a2 = v[(int) v.size() - 1].first;
-				b1 = v[(int) v.size() - 2].second;
-				b2 = v[(int) v.size() - 1].second;
-				if ((b1 - b2) * (a - a1) > (b1 - b) * (a2 - a1))
-					v.pop_back();
-				else
-					break;
-			}
-			v.push_back(make_pair(a, b));
-		}
+			int lo = 0, hi = (int) size() - 1, mid;
 
-		bool isEmpty()
-		{
-			return v.empty();
-		}
-
-		void setEmpty()
-		{
-			v.clear();
-		}
-
-		ll get(ll x)
-		{
-			int lo = 0, hi = (int) v.size() - 1;
 			while (lo < hi)
 			{
-				int mid = (lo + hi) >> 1;
-				if (f(v[mid].first, v[mid].second, x)
-					<= f(v[mid + 1].first, v[mid + 1].second, x))
-					lo = mid + 1;
-				else
-					hi = mid;
-			}
-			return f(v[lo].first, v[lo].second, x);
-		}
+				mid = (lo + hi) / 2;
 
-		ll f(ll a, ll b, ll x)
-		{
-			return a * x + b;
+				if (dot(at(mid), p) <= dot(at(mid + 1), p))
+					lo = mid + 1;
+				else hi = mid;
+			}
+
+			return dot(at(lo), p);
 		}
 	};
 
-	hull merge(const hull &a, const hull &b)
+	static hull merge(const hull &a, const hull &b)
 	{
-		size_t i, j;
-		i = j = 0;
-		hull ans;
-		while (i < a.v.size() && j < b.v.size())
-		{
-			if (a.v[i].first < b.v[j].first)
-				ans.add(a.v[i].first, a.v[i].second), ++i;
-			else
-				ans.add(b.v[j].first, b.v[j].second), ++j;
-		}
-		while (i < a.v.size())
-			ans.add(a.v[i].first, a.v[i].second), ++i;
-		while (j < b.v.size())
-			ans.add(b.v[j].first, b.v[j].second), ++j;
-		return ans;
+		hull h;
+		size_t i = 0, j = 0;
+
+		while (i < a.size() && j < b.size())
+			if (a[i] < b[j]) h.add_point(a[i++]);
+			else h.add_point(b[j++]);
+
+		while (i < a.size()) h.add_point(a[i++]);
+
+		while (j < b.size()) h.add_point(b[j++]);
+
+		return h;
 	}
 
-	vector<hull> h;
+	vector<hull> hulls;
 };
