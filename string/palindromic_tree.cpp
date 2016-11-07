@@ -1,64 +1,52 @@
 /*
-	Tested: SPOJ LPS, APIO14_A
+	Palindromic Tree
+
 	Complexity: O(n)
+
+	Tested: ??
 */
 
-template<typename T>
-struct palindromic_tree
+template<size_t maxlen, size_t alpha>
+struct PalindromicTree
 {
-	struct node
-	{
-		int len;
-		map<T, node*> next;
-		node *suf;
-	};
+	int go[maxlen + 2][alpha], slink[maxlen + 2], length[maxlen + 2], size, last;
+	int s[maxlen], slength;
 
-	vector<T> s;
-	vector<node*> nodes;
-	node *neg, *zero, *suf;
-
-	node* new_node()
+	int new_node()
 	{
-		nodes.push_back(new node());
-		return nodes.back();
+		memset(go[size], 0, sizeof go[size]);
+		slink[size] = length[size] = 0;
+		return size++;
 	}
 
-	palindromic_tree()
+	PalindromicTree() { reset(); }
+
+	void reset()
 	{
-		(neg = new_node())->len = -1;
-		suf = zero = new_node();
-		neg->suf = zero->suf = neg;
+		size = slength = 0;
+		length[new_node()] = -1;
+		last = new_node();
 	}
 
-	void add(T c)
+	int get_link(int p)
 	{
-		int i = s.size();
-		s.push_back(c);
-		node *p = suf;
-		for (; i - 1 - p->len < 0 || s[i - 1 - p->len] != c; p = p->suf);
-		if (p->next.count(c))
-		{
-			suf = p->next[c];
-			return;
-		}
-		suf = new_node();
-		suf->len = p->len + 2;
-		p->next[c] = suf;
-		if (suf->len == 1)
-			suf->suf = zero;
-		else
-		{
-			p = p->suf;
-			for (; i - 1 - p->len < 0 || 
-				s[i - 1 - p->len] != c; p = p->suf);
-			suf->suf = p->next[c];
-		}
+		for (int i = slength - 1; i - 1 - length[p] < 0 || s[i - 1 - length[p]] != s[i];)
+			p = slink[p];
+		return p;
 	}
 
-	~palindromic_tree()
+	int _extend(int c)
 	{
-		for (auto p : nodes)
-			delete p;
+		s[slength++] = c;
+		int p = get_link(last), np;
+		if (go[p][c]) return go[p][c];
+		length[np = new_node()] = 2 + length[p];
+		go[p][c] = np;
+		if (length[np] == 1) return slink[np] = 1, np;
+		p = slink[p];
+		slink[np] = go[get_link(p)][c];
+		return np;
 	}
+
+	void extend(int c) { last = _extend(c); }
 };
-
