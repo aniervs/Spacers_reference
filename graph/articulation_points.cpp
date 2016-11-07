@@ -1,7 +1,19 @@
 /*
 	Articulation points / Biconnected components
-	Tested: SPOJ SUBMERGE
+
+	Description:
+	- Let G = (V, E). If G-v is disconnected, v in V is said to
+	be an articulation point. If G has no articulation points,
+	it is said to be biconnected.
+	- A biconnected component is a maximal biconnected subgraph.
+	The algorithm finds all articulation points and biconnected
+	components.
+
 	Complexity: O(n + m)
+
+	Tested:
+	- http://www.spoj.com/problems/SUBMERGE/
+	- http://codeforces.com/problemset/problem/487/E
 */
 
 struct graph
@@ -11,40 +23,75 @@ struct graph
 
 	graph(int n) : n(n), adj(n) {}
 
-	void add_edge(int src, int dst)
+	void add_edge(int u, int v)
 	{
-		adj[src].push_back(dst);
-		adj[dst].push_back(src);
+		adj[u].push_back(v);
+		adj[v].push_back(u);
 	}
+
+	int add_node()
+	{
+		adj.push_back({});
+		return n++;
+	}
+
+	vector<int>& operator[](int u) { return adj[u]; }
 };
 
-void biconnected_components(const graph &g)
+vector<vector<int>> biconnected_components(graph &adj)
 {
-	vector<int> arts(g.n), num(g.n), low(g.n), S;
+	int n = adj.n;
+
+	vector<int> num(n), low(n), art(n), stk;
 	vector<vector<int>> comps;
+
 	function<void(int, int, int&)> dfs = [&](int u, int p, int &t)
 	{
 		num[u] = low[u] = ++t;
-		S.push_back(u);
-		for (int v : g.adj[u])
+		stk.push_back(u);
+
+		for (int v : adj[u]) if (v != p)
 		{
-			if (v == p) continue;
-			if (num[v] == 0)
+			if (!num[v])
 			{
 				dfs(v, u, t);
 				low[u] = min(low[u], low[v]);
-				if (num[u] <= low[v])
+
+				if (low[v] >= num[u])
 				{
-					if (num[u] != 1 || low[v] > 2) arts[u] = true;
-					for (comps.push_back({u}); 
-						comps.back().back() != v; S.pop_back())
-					comps.back().push_back(S.back());
+					art[u] = (num[u] > 1 || num[v] > 2);
+
+					comps.push_back({u});
+					while (comps.back().back() != v)
+						comps.back().push_back(stk.back()), stk.pop_back();
 				}
 			}
 			else low[u] = min(low[u], num[v]);
 		}
 	};
-	for (int u = 0, t; u < g.n; ++u)
-		if (num[u] == 0)
-			dfs(u, -1, t = 0);
+
+	for (int u = 0, t; u < n; ++u)
+		if (!num[u]) dfs(u, -1, t = 0);
+
+	// build the block cut tree
+	function<graph()> build_tree = [&]()
+	{
+		graph tree(0);
+		vector<int> id(n);
+
+		for (int u = 0; u < n; ++u)
+			if (art[u]) id[u] = tree.add_node();
+
+		for (auto &comp : comps)
+		{
+			int node = tree.add_node();
+			for (int u : comp)
+				if (!art[u]) id[u] = node;
+				else tree.add_edge(node, id[u]);
+		}
+
+		return tree;
+	};
+
+	return comps;
 }
