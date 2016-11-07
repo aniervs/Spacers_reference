@@ -53,7 +53,8 @@ struct dinic
 			edge &e = adj[source][it[source]];
 			if (e.flow < e.cap && level[e.dst] + 1 == level[source])
 			{
-				flow_type delta = augment(e.dst, sink, min(flow, e.cap - e.flow));
+				flow_type delta = augment(e.dst, sink, 
+								  min(flow, e.cap - e.flow));
 				if (delta > 0)
 				{
 					e.flow += delta;
@@ -70,10 +71,12 @@ struct dinic
 		for (int u = 0; u < n; ++u)
 			for (edge &e : adj[u]) e.flow = 0;
 		flow_type flow = 0;
+		flow_type oo = numeric_limits<flow_type>::max();
+
 		while (bfs(source, sink))
 		{
 			fill(it.begin(), it.end(), 0);
-			for (flow_type f; (f = augment(source, sink, numeric_limits<flow_type>::max())) > 0;)
+			for (flow_type f; (f = augment(source, sink, oo)) > 0;)
 				flow += f;
 
 		} // level[u] = -1 => source side of min cut

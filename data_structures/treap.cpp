@@ -11,7 +11,8 @@ struct node
     int prio, size, rev;
     node *l, *r;
 
-    node(pair<int, int> val) : val(val), mn(val), prio(rand()), size(1), rev(0), l(0), r(0) {}
+    node(pair<int, int> val) : val(val), mn(val), prio(rand()), 
+                                size(1), rev(0), l(0), r(0) {}
 };
 
 int size(node *u)

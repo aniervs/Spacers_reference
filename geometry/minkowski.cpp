@@ -18,7 +18,8 @@ polygon minkowski(polygon &A, polygon &B){
 
 	while (pa < na && pb < nb){
 		M.push_back(A[pa] + B[pb]);
-		double x = cross(A[(pa + 1) % na] - A[pa], B[(pb + 1) % nb] - B[pb]);
+		double x = cross(A[(pa + 1) % na] - A[pa], 
+						 B[(pb + 1) % nb] - B[pb]);
 		if (x <= eps) pb++;
 		if (-eps <= x) pa++;
 	}

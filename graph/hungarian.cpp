@@ -44,8 +44,8 @@ T max_assignment(const vector<vector<T>> &a)
 			T delta = numeric_limits<T>::max();
 
 			for (int i = 0; i <= q; ++i)
-				for (int v = 0; v < m; ++v)
-					if (t[v] < 0) delta = min(delta, px[s[i]] + py[v] - a[s[i]][v]);
+				for (int v = 0; v < m; ++v) if (t[v] < 0) 
+					delta = min(delta, px[s[i]] + py[v] - a[s[i]][v]);
 
 			for (int i = 0; i <= q; ++i)
 				px[s[i]] -= delta;

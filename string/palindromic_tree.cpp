@@ -9,8 +9,8 @@
 template<size_t maxlen, size_t alpha>
 struct PalindromicTree
 {
-	int go[maxlen + 2][alpha], slink[maxlen + 2], length[maxlen + 2], size, last;
-	int s[maxlen], slength;
+	int go[maxlen + 2][alpha], slink[maxlen + 2], length[maxlen + 2];
+	int s[maxlen], slength, size, last;
 
 	int new_node()
 	{
@@ -30,7 +30,8 @@ struct PalindromicTree
 
 	int get_link(int p)
 	{
-		for (int i = slength - 1; i - 1 - length[p] < 0 || s[i - 1 - length[p]] != s[i];)
+		for (int i = slength - 1; 
+			 i - 1 - length[p] < 0 || s[i - 1 - length[p]] != s[i];)
 			p = slink[p];
 		return p;
 	}

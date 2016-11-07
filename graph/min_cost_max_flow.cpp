@@ -41,7 +41,8 @@ struct min_cost_max_flow
 		for (int k = 0; k < n; ++k)
 			for (int u = 0; u < n; ++u)
 				for (edge &e : adj[u])
-					if (e.cap > 0 && rcost(e) < 0) potential[e.dst] += rcost(e);
+					if (e.cap > 0 && rcost(e) < 0) 
+						potential[e.dst] += rcost(e);
 	}
 
 	const cost_type oo = numeric_limits<cost_type>::max();
@@ -64,10 +65,12 @@ struct min_cost_max_flow
 			if (p.second == sink) break;
 
 			for (edge &e : adj[p.second])
-				if (e.flow < e.cap && dist[e.dst] > dist[e.src] + rcost(e))
+				if (e.flow < e.cap && 
+					dist[e.dst] > dist[e.src] + rcost(e))
 				{
 					back[e.dst] = &e;
-					pq.push({dist[e.dst] = dist[e.src] + rcost(e), e.dst});
+					pq.push({dist[e.dst] = dist[e.src] + rcost(e), 
+							 e.dst});
 				}
 		}
 

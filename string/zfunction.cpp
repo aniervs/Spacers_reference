@@ -40,7 +40,8 @@ vector<int> suffixes(const string &s)
 			suff[i] = min(suff[i + n - 1 - f], i - g);
 		else
 		{
-			for (g = min(g, f = i); g >= 0 && s[g] == s[g + n - 1 - f]; --g);
+			for (g = min(g, f = i); g >= 0 && 
+				 s[g] == s[g + n - 1 - f]; --g);
 			suff[i] = f - g;
 		}
 	}

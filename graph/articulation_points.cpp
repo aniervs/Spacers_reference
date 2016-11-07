@@ -63,7 +63,8 @@ vector<vector<int>> biconnected_components(graph &adj)
 
 					comps.push_back({u});
 					while (comps.back().back() != v)
-						comps.back().push_back(stk.back()), stk.pop_back();
+						comps.back().push_back(stk.back()), 
+						stk.pop_back();
 				}
 			}
 			else low[u] = min(low[u], num[v]);

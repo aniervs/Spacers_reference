@@ -13,7 +13,8 @@
 template<size_t maxlen, size_t alpha>
 struct SuffixAutomaton
 {
-	int go[2 * maxlen][alpha], slink[2 * maxlen], length[2 * maxlen], size, last;
+	int go[2 * maxlen][alpha], slink[2 * maxlen], length[2 * maxlen];
+	int size, last;
 
 	int new_node()
 	{

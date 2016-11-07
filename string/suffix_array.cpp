@@ -24,11 +24,13 @@ struct SuffixArray
 		vector<int> _sa(n), bucket(n);
 
 		iota(sa.rbegin(), sa.rend(), 0);
-		sort(next(sa.begin()), sa.end(), [&](int i, int j) { return s[i] < s[j]; });
+		sort(next(sa.begin()), sa.end(), 
+			[&](int i, int j) { return s[i] < s[j]; });
 
 		for (int i = 1, j = 0; i < n; ++i)
 		{
-			rank[sa[i]] = rank[sa[i - 1]] + (i == 1 || s[sa[i - 1]] < s[sa[i]]);
+			rank[sa[i]] = rank[sa[i - 1]] + 
+						  (i == 1 || s[sa[i - 1]] < s[sa[i]]);
 			if (rank[sa[i]] != rank[sa[i - 1]])
 				bucket[++j] = i;
 		}
@@ -45,7 +47,8 @@ struct SuffixArray
 
 			for (int i = 1, j = 0; i < n; ++i)
 			{
-				if (rank[_sa[i]] != rank[_sa[i - 1]] || rank[_sa[i] + len] != rank[_sa[i - 1] + len])
+				if (rank[_sa[i]] != rank[_sa[i - 1]] || 
+					rank[_sa[i] + len] != rank[_sa[i - 1] + len])
 					bucket[++j] = i;
 
 				sa[_sa[i]] = j;

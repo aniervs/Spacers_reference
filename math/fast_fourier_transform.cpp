@@ -14,7 +14,9 @@ struct point
 
 point operator+(const point &a, const point &b) { return {a.x + b.x, a.y + b.y}; }
 point operator-(const point &a, const point &b) { return {a.x - b.x, a.y - b.y}; }
-point operator*(const point &a, const point &b) { return {a.x * b.x - a.y * b.y, a.x * b.y + a.y * b.x}; }
+point operator*(const point &a, const point &b) { 
+	return {a.x * b.x - a.y * b.y, a.x * b.y + a.y * b.x}; 
+}
 point operator/(const point &a, double d) { return {a.x / d, a.y / d}; }
 
 void fft(vector<point> &a, int sign = +1)

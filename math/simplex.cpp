@@ -62,7 +62,8 @@ double simplexMethodPD(mat &A, vec &b, vec &c)
 			// tight on c -> primal update
 			for (int j = 0; j < m; ++j)
 				if (T[j][p] >= eps)
-					if (T[j][p] * (T[q][n + m] - t) >= T[q][p] * (T[j][n + m] - t))
+					if (T[j][p] * (T[q][n + m] - t) >= 
+						T[q][p] * (T[j][n + m] - t))
 						q = j;
 
 			if (T[q][p] <= eps)
@@ -76,7 +77,8 @@ double simplexMethodPD(mat &A, vec &b, vec &c)
 
 			for (int i = 0; i < n + m; ++i)
 				if (T[q][i] >= eps)
-					if (T[q][i] * (T[m][p] - t) >= T[q][p] * (T[m][i] - t))
+					if (T[q][i] * (T[m][p] - t) >= 
+						T[q][p] * (T[m][i] - t))
 						p = i;
 
 			if (T[q][p] <= eps)

@@ -45,7 +45,8 @@ vector<vector<int>> bridge_blocks(graph &adj)
 		num[u] = low[u] = ++t;
 		stk.push_back(u);
 
-		sort(adj[u].begin(), adj[u].end()); // remove if there isn't parallel edges
+		// remove if there isn't parallel edges
+		sort(adj[u].begin(), adj[u].end()); 
 
 		for (int i = 0, sz = adj[u].size(); i < sz; ++i)
 		{

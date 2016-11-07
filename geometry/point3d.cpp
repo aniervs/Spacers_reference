@@ -29,7 +29,8 @@ point3d from_polar(double lat, double lon, double R)
 {
 	lat = lat / 180.0 * pi;
 	lon = lon / 180.0 * pi;
-	return point3d(R * cos(lat) * sin(lon), R * cos(lat) * cos(lon), R * sin(lat));
+	return point3d(R * cos(lat) * sin(lon), 
+				   R * cos(lat) * cos(lon), R * sin(lat));
 }
 
 struct plane
