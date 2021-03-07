@@ -3,6 +3,25 @@
 	Note: be carful with overflow
 */
 
+ll mul(ll a, ll b, ll M)
+{
+	ll q = (long double) a * (long double) b / (long double) M;
+	ll r = a * b - q * M;
+	return (r + 5 * M) % M;
+}
+
+ll pow(ll a, ll b, ll M)
+{
+	ll x = 1;
+	for (; b > 0; b >>= 1)
+	{
+		if (b & 1) x = mul(x, a, M);
+		a = mul(a, a, M);
+	}
+	return x;
+}
+
+
 bool witness(ll a, ll s, ll d, ll n)
 {
 	ll x = pow(a, d, n);

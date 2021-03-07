@@ -11,3 +11,7 @@ function<bool(int, int)> add_edge = [&](int u, int v)
     // code here...
     return true;
 };
+
+// RANDOM DISTRIBUTIONS
+  std::default_random_engine generator;
+  std::uniform_real_distribution<double> distribution(0.0,1.0);

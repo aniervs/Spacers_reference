@@ -1,4 +1,4 @@
-/*
+/***
 	Two-Sat
 
 	Complexity: O(n)
